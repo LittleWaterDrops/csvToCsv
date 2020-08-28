@@ -354,7 +354,7 @@ int main(void) {
 		}
 		if (trash == 0) {
 			if (strcmp(d_Array[i], magXyz) == 0) {
-				fputs(",,,", writeFile);
+				fputs(",,,,,,", writeFile);
 				fputs(d_Array[i + 3], writeFile);
 				fputs(",", writeFile);
 				fputs(d_Array[i + 5], writeFile);
@@ -363,6 +363,7 @@ int main(void) {
 				fputs("\n", writeFile);
 			}
 		}
+		
 
 		//     gyro     /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		if (strcmp(d_Array[i], gyroInterval) == 0) {
@@ -437,7 +438,7 @@ int main(void) {
 		}
 		if (trash == 0) {
 			if (strcmp(d_Array[i], gyroXyz) == 0) {
-				fputs(",,,,,,", writeFile);
+				fputs(",,,", writeFile);
 				fputs(d_Array[i + 3], writeFile);
 				fputs(",", writeFile);
 				fputs(d_Array[i + 5], writeFile);
