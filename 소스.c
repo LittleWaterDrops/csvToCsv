@@ -187,7 +187,7 @@ int main(void) {
 		ptr2 = strtok(NULL, ",");      // 다음 문자열을 잘라서 포인터를 반환
 	}
 	
-	fputs("Position X,Position Y,Position Z,Velocity,AccX,AccY,AccZ,GyroX,GyroY,GyroZ,MagX,MagY,MagZ,Minor201,Minor202,Minor203,Minor204,Minor205,Minor206,Minor207,Minor208,Minor209,Minor210,Minor211,Minor212,Minor213,Minor214,Minor215,Minor216,Minor217,Minor218,Minor219,Minor220,Minor221,Minor222,Minor223,Minor224,Minor225,Minor226,Minor227,Minor228,Minor229,Minor230,Minor231,Minor232,Minor233,Minor234,Minor235,Minor236,Minor237,Minor238,Minor239,Minor240,Minor241,Minor242,Minor243,Minor244,Minor245,Minor246,Minor247,Minor248,Minor249,Minor250,Minor251,Minor252,Minor253,Minor254,Minor255,Minor256,Minor257,Minor258,Minor259,Minor260\n", writeFile);
+	fputs("Position X,Position Y,Position Z,Velocity,TimeStamp,AccX,AccY,AccZ,GyroX,GyroY,GyroZ,MagX,MagY,MagZ,Minor201,Minor202,Minor203,Minor204,Minor205,Minor206,Minor207,Minor208,Minor209,Minor210,Minor211,Minor212,Minor213,Minor214,Minor215,Minor216,Minor217,Minor218,Minor219,Minor220,Minor221,Minor222,Minor223,Minor224,Minor225,Minor226,Minor227,Minor228,Minor229,Minor230,Minor231,Minor232,Minor233,Minor234,Minor235,Minor236,Minor237,Minor238,Minor239,Minor240,Minor241,Minor242,Minor243,Minor244,Minor245,Minor246,Minor247,Minor248,Minor249,Minor250,Minor251,Minor252,Minor253,Minor254,Minor255,Minor256,Minor257,Minor258,Minor259,Minor260\n", writeFile);
 
 	for (int i = 0; i < readCellCount; i++) {
 		char* accInterval = "accInterval\0";
@@ -272,6 +272,8 @@ int main(void) {
 		}
 		if (trash == 0) {
 			if (strcmp(d_Array[i], accXyz) == 0) {
+				fputs(d_Array[i - 3], writeFile);
+				fputs(",", writeFile);
 				fputs(d_Array[i + 3], writeFile);
 				fputs(",", writeFile);
 				fputs(d_Array[i + 5], writeFile);
@@ -354,6 +356,8 @@ int main(void) {
 		}
 		if (trash == 0) {
 			if (strcmp(d_Array[i], magXyz) == 0) {
+				fputs(d_Array[i - 3], writeFile);
+				fputs(",", writeFile);
 				fputs(",,,,,,", writeFile);
 				fputs(d_Array[i + 3], writeFile);
 				fputs(",", writeFile);
@@ -438,6 +442,8 @@ int main(void) {
 		}
 		if (trash == 0) {
 			if (strcmp(d_Array[i], gyroXyz) == 0) {
+				fputs(d_Array[i - 3], writeFile);
+				fputs(",", writeFile);
 				fputs(",,,", writeFile);
 				fputs(d_Array[i + 3], writeFile);
 				fputs(",", writeFile);
@@ -525,6 +531,8 @@ int main(void) {
 			if (strcmp(d_Array[i], minor) == 0) {
 				int minorDiff = atoi(d_Array[i + 1]) - 200;
 				if (minorDiff > 0 && minorDiff < 61) {
+					fputs(d_Array[i - 9], writeFile);
+					fputs(",", writeFile);
 					fputs(",,,,,,,,", writeFile);
 
 					for(int i=1;i<=minorDiff;i++)
